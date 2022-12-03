@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content%}
+<style>
+    form{
+        margin-top: 100px;
+        margin-left: 300px;
+        width: 50%;
+    }
+</style>
+<form method="POST" action="">
+    <h1>Order</h1><br/>
+    {% csrf_token%}
+    {{form.as_p}}
+    <input class="btn btn-success" type="submit" name="submit">
+</form>
+{%endblock%}

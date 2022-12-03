@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>are you sure you want to delete {{iteam}}?</p>
+<form action="{% url 'delete_order' item.id %}" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'home' %}">cancle</a>
+    <input type="submit" name="confirm">
+
+</form>
+{%endblock%}

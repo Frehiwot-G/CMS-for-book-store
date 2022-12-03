@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<header>
+    <style>
+        h5{
+            font-family: 'Times New Roman', Times, serif;
+            font-weight:bolder;
+        }
+        #lists .card-body{
+            background-color: #7b876d;
+        }
+        #lists .table-sm tr{
+            color: aliceblue;
+        }
+    </style>
+</header>
+<body>
+<br>
+{% include 'status.html' %}
+<div class="row" id="lists">
+    <div class="col-md-5" ><br/>
+        <h5 style="margin-left: 180px;">Customers</h5>
+        <hr>
+        <div class="card card-body">
+            
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>customer</th>
+                    <th>orders</th>
+                </tr>
+                {% for customer in customers%}
+                <tr>
+                    
+                    <td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}" >view</a></td>
+                    <td> {{customer.name}}</td>
+                    <td> {{customer.phone}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col-md-7"><br/>
+        <h5 style="margin-left: 300px;">Last 5 orders</h5>
+        <hr>
+       
+        <div class="card card-body">
+           
+            <table class="table table-sm">
+                <tr>
+                    <th>book</th>
+                    <th>date ordered</th>
+                    <th>status</th>
+                    <th>update</th>
+                    <th>remove</th>
+                </tr>
+                {% for i in orders%}
+                <tr>
+                    <td>{{i.book}}</td>
+                    <td>{{i.date_created}}</td>
+                    <td>{{i.status}}</td>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'update_order' i.id %}">update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' i.id %}">delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</div>
+</body>
+{% endblock content %} 

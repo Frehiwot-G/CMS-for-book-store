@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<header>
+    <style>
+        p{
+            font-family: 'Times New Roman', Times, serif;
+            font-size: larger;
+        }
+        .container{
+            margin-left: 300px;
+            margin-top: 100px;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            color: aliceblue;
+        }
+    </style>
+</header>
+<div class="container">
+    <p>are you sure you want to delete <b> {{item}}</b>?</p>
+    <form action="{% url 'delete_book' item.id %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger"><a href="{% url 'book' %}">cancle</a></button>
+        <input class="btn btn-primary" type="submit" name="confirm">
+    </form>
+</div>
+
+{%endblock%}

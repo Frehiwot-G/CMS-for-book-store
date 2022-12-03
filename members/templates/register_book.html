@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<header>
+    <style>
+        .form-group{
+            width: 50%;
+            margin-left: 300px;
+        }
+    </style>
+</header>
+<div class="form-group mb-2">
+    <h1>Record Book</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-secondary">Submit</button>
+    </form>
+</div>
+{% endblock content %} 
