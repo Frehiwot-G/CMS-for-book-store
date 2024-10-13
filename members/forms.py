@@ -10,10 +10,24 @@ class CustomerForm(ModelForm):
         fields ='__all__'
         exclude=['user']
 
+class OrderFormCustomer(ModelForm):
+    class Meta:
+        model=Order
+        # fields ='__all__'
+        fields = ('customer', 'book', 'note')
+        widgets={
+            # 'customer': forms.Select(attrs={'class':'form-control','placeholder':'tittle'}),
+            'customer':forms.HiddenInput(attrs={'class':'form-control'}),
+            'book':forms.Select(attrs={'class':'form-control','placeholder':'Author'}),
+            # 'status':forms.Select(attrs={'class':'form-control','placeholder':'price'}),
+            'note':forms.TextInput(attrs={'class':'form-control','placeholder':'Description'}),
+        }
+
 class OrderForm(ModelForm):
     class Meta:
         model=Order
         fields ='__all__'
+        # fields = ('customer', 'book', 'note')
         widgets={
             'customer': forms.Select(attrs={'class':'form-control','placeholder':'tittle'}),
             'book':forms.Select(attrs={'class':'form-control','placeholder':'Author'}),

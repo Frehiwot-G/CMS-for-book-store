@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib import messages
 from .models import *
-from .forms import NewMemberForm,OrderForm,CustomerForm,BookForm
+from .forms import NewMemberForm,OrderForm,CustomerForm,BookForm, OrderFormCustomer
 
 from .filters import OrderFilter
 from .decoraters import admin_only, unauthenticated_user, allowed_users
@@ -87,6 +87,26 @@ def createOrder(request,pk):
     # context={'form':form}
     context={'form':form}
     return render(request,'create_order.html',context)
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['customer'])
+def createOrderCustomer(request):
+    # OrderFormSet=inlineformset_factory(Customer,Order,fields=('book','status'),extra=10)
+    # customer=Customer.objects.get(id=pk)
+    customer=request.user.customer
+    # form=OrderFormSet(instance=customer)
+    form=OrderFormCustomer(initial={'customer':customer})
+    if request.method == 'POST':
+        form=OrderForm(request.POST)
+        # form=OrderFormSet(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    # context={'form':form}
+    context={'form':form}
+    return render(request,'create_order.html',context)
+
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
