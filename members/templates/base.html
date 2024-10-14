@@ -20,20 +20,41 @@
     <style>
       body {
         background-color: #d7dbd3;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       }
       #total-orders,
       #orders-delivered,
       #orders-pending {
         background-color: #ad92ad;
       }
+      main {
+        flex: 1;
+      }
+      footer {
+        color: black;
+        text-align: center;
+        padding: 10px 0;
+      }
+      a {
+        color: #ad92ad;
+      }
     </style>
   </head>
+
   <body>
-    {% include 'navbar.html' %} 
-    {% block content %} 
-    {% endblock %} 
-    {% include 'footer.html' %}
-    <!-- <h5>footer</h5>
-        <hr> -->
+    {% include 'navbar.html' %}
+
+    <main>{% block content %} {% endblock %}</main>
+
+    <footer class="bg-light">
+      <p>
+        &copy; 2022 Library System. All Rights Reserved.
+        <a class="text-body" href="https://frehiwot-gemechu.netlify.app/"
+          >Frehiwot.</a
+        >
+      </p>
+    </footer>
   </body>
 </html>

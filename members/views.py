@@ -98,7 +98,7 @@ def createOrderCustomer(request):
     # form=OrderFormSet(instance=customer)
     form=OrderFormCustomer(initial={'customer':customer})
     if request.method == 'POST':
-        form=OrderForm(request.POST)
+        form=OrderFormCustomer(request.POST)
         # form=OrderFormSet(request.POST, instance=customer)
         if form.is_valid():
             form.save()
