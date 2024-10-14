@@ -4,6 +4,60 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import *
 
+from django.contrib.auth.forms import SetPasswordForm
+
+
+class CustomSetPasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(
+        label="New password",
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your new password',
+            'aria-describedby': 'passwordHelpBlock'
+        }),
+        help_text="""
+            <ul class="list-unstyled">
+                <li>Your password can not be too similar to your other personal information.</li>
+                <li>Your password must contain at least 8 characters.</li>
+                <li>Your password can not be a commonly used password.</li>
+                <li>Your password can not be entirely numeric.</li>
+            </ul>
+        """
+    )
+    new_password2 = forms.CharField(
+        label="Confirm new password",
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Confirm your new password',
+        }),
+    )
+
+class CustomSetPasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(
+        label="New password",
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your new password',
+            'aria-describedby': 'passwordHelpBlock'
+        }),
+        help_text="""
+            <ul class="list-unstyled">
+                <li>Your password can’t be too similar to your other personal information.</li>
+                <li>Your password must contain at least 8 characters.</li>
+                <li>Your password can’t be a commonly used password.</li>
+                <li>Your password can’t be entirely numeric.</li>
+            </ul>
+        """
+    )
+    new_password2 = forms.CharField(
+        label="Confirm new password",
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Confirm your new password',
+        }),
+    )
+
+
 class CustomerForm(ModelForm):
     class Meta:
         model=Customer
