@@ -58,11 +58,39 @@ class CustomSetPasswordForm(SetPasswordForm):
     )
 
 
+# class CustomerForm(ModelForm):
+#     class Meta:
+#         model=Customer
+#         fields ='__all__'
+#         exclude=['user']
+#         widgets={
+#             'name':forms.TextInput(attrs={'class':'form-control'}),
+#             'profile':forms.ImageField(attrs={'class':'form-control'}),
+#             'phone':forms.TextInput(attrs={'class':'form-control','placeholder':'phone'}),
+#             'email':forms.TextInput(attrs={'class':'form-control','placeholder':'email'}),
+#         }
 class CustomerForm(ModelForm):
-    class Meta:
-        model=Customer
-        fields ='__all__'
-        exclude=['user']
+   class Meta:
+        model = Customer
+        fields = '__all__'
+        exclude = ['user']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Enter your name'
+            }),
+            'phone': forms.TextInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Enter your phone number'
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Enter your email address'
+            }),
+            'profile': forms.ClearableFileInput(attrs={
+                'class': 'form-control'
+            }),
+        }
 
 class OrderFormCustomer(ModelForm):
     class Meta:
