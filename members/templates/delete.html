@@ -8,7 +8,7 @@
 </form> -->
 <div class="container mt-5">
   <div class="card card-body">
-    <p class="mb-3">Are you sure you want to delete <b>{{ item }}</b>?</p>
+    <p class="mb-3">Are you sure you want to delete <b>{{ item.book }}</b>?</p>
     <form action="{% url 'delete_order' item.id %}" method="POST">
       {% csrf_token %}
       <div class="d-flex justify-content-between">
