@@ -131,7 +131,7 @@ def deleteOrder(request,pk):
     if request.method == 'POST':
         order.delete()
         return redirect('/')
-    context={'item':order}
+    context={'item':order.book}
     return render(request,'delete.html',context)
 
 @login_required(login_url='login')

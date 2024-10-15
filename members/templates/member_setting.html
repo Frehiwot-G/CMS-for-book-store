@@ -89,28 +89,4 @@
   </body>
 </html>
 
-<br /><br />
-
-<!-- <div class="row">
-  <div class="col-md-3">
-    <div class="card card-body">
-      <a class="btn btn-warning" href="{% url 'home' %}">&#8592;back to home</a>
-      <hr />
-      <h3 style="text-align: center">account setting</h3>
-      <hr />
-      {%if request.user.customer.profile%}
-      <img class="profile-pic" src="{{request.user.customer.profile.url}}" />
-      {%endif%}
-    </div>
-  </div>
-  <div class="col-md-9">
-    <div class="card card-body">
-      <form method="POST" action="" enctype="multipart/form-data">
-        {%csrf_token%} {{form.as_p}}
-        <input class="btn btn-primary" type="submit" name="Update info" />
-      </form>
-    </div>
-  </div>
-</div> -->
-
 {%endblock%}

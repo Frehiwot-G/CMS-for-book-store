@@ -14,10 +14,8 @@ class Book(models.Model):
     CATEGORY=(
         ('fiction','fiction'),
         ('religious','religious'),
-        ('computer science','computer science'),
-        ('engineering','engineering'),
-        ('pyscological','pyscological'),
-    
+        ('Programming/Web Development','Programming/Web Development'),
+        ('Self-Help','Self-Help'),   
     )
     title=models.CharField(max_length=200, null=True)
     author=models.CharField(max_length=200, null=True)

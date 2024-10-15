@@ -27,13 +27,6 @@
     </div>
   </div>
 
-  <!-- <div class="col-md-3">
-    <div class="card card-body">
-      <h5>Total order</h5>
-      <hr />
-      <h1 style="text-align: center; padding: 10px">{{order_count}}</h1>
-    </div>
-  </div> -->
   <div class="col-md-4">
     <div class="card text-center text-white mb-3 h-100" id="total-orders">
       <div class="card-header">
@@ -47,23 +40,13 @@
   </div>
 </div>
 <br />
-<!-- <div class="row">
-    <div class="col">
-        <div class="card card-body">
-            <form method="get">
-                {{myfilter.form}}
-                <button class="btn btn-primary" type="submit">search</button>
-            </form>
-        </div>
-    </div>
-</div> -->
+
 <div class="row justify-content-center mt-5">
   <div class="col-12">
     <div class="card card-body shadow-sm">
       <h4 class="card-title mb-3 text-center">Filter Orders</h4>
       <form method="get">
         <div class="row">
-          <!-- Start Date Field -->
           <div class="col-md-4 mb-3">
             <label
               for="{{ myfilter.form.start_date.id_for_label }}"
@@ -73,7 +56,6 @@
             {{ myfilter.form.start_date }}
           </div>
 
-          <!-- End Date Field -->
           <div class="col-md-4 mb-3">
             <label
               for="{{ myfilter.form.end_date.id_for_label }}"
@@ -83,7 +65,6 @@
             {{ myfilter.form.end_date }}
           </div>
 
-          <!-- Note Field -->
           <div class="col-md-4 mb-3">
             <label
               for="{{ myfilter.form.note.id_for_label }}"
@@ -93,18 +74,13 @@
             {{ myfilter.form.note }}
           </div>
         </div>
-
-        <!-- Search Button -->
-        <!-- <div class="d-grid"> -->
         <button class="btn btn-info btn-block" type="submit">Search</button>
-        <!-- </div> -->
       </form>
     </div>
   </div>
 </div>
 
 <div class="row justify-content-center">
-  <!-- <div class="col-md-9"> -->
     <div class="col-12">
     <div class="card card-body">
       <table class="table table-lg">
