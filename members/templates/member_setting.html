@@ -25,11 +25,11 @@
   <body style="background-color: #d7dbd3">
     <div class="row" style="margin-right: 20px; margin-top: 50px">
       <div class="col-md-3">
-        <div class="card card-body text-center shadow-sm">
+        <div class="card card-body text-center shadow-sm h-100">
           <a
             class="btn mb-3"
             href="{% url 'home' %}"
-            style="background-color: #ad92ad;color:whitesmoke ;"
+            style="background-color: #ad92ad; color: whitesmoke"
             >&#8592; Back to Home</a
           >
           <hr />
@@ -37,7 +37,7 @@
           <hr />
           {% if request.user.customer.profile %}
           <img
-            class="profile-pic img-fluid rounded-circle mb-3"
+            class="profile-pic img-fluid rounded-circle mb-3 mt-5"
             src="{{ request.user.customer.profile.url }}"
             alt="Profile Picture"
             style="width: 150px; height: 150px; object-fit: cover"
