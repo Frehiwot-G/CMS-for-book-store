@@ -1,35 +1,53 @@
-{% extends 'base.html' %}
-{% block content %}
-<br>
+{% extends 'base.html' %} {% block content %}
+<br />
 <div class="row">
-    <div class="col-md-3">
-        <div class="card card-body">
-            <h5>Customer</h5>
-            <hr>
-            <a class="btn btn-outline-info btn-sm btn-block" href="">update customer</a>
-            <a class="btn btn-outline-danger btn-sm btn-block" href="{% url 'create_order' customer.id %}">place order</a>
-        </div>
+  <div class="col-md-4">
+    <div class="card card-body h-100 text-center text-white mb-3" id="total-orders">
+      <h5>Customer</h5>
+      <hr />
+      <!-- <a class="btn btn-outline-info btn-sm btn-block" href="">update customer</a> -->
+      <a
+        class="btn btn-outline-danger btn-sm btn-block"
+        href="{% url 'create_order' customer.id %}"
+        >place order</a
+      >
     </div>
+  </div>
 
-    <div class="col-md-3">
-        <div class="card card-body">
-            <h5>Contact Information</h5>
-            <hr>
-            <p>Email:{{customer.email}}</p>
-            <p>Phone:{{customer.phone}}</p>
-        </div>
-    </div>
 
-    <div class="col-md-3">
-        <div class="card card-body">
-            <h5>Total order</h5>
-            <hr>
-            <h1 style="text-align: center;padding: 10px;">{{order_count}}</h1>
-        </div>
+  <div class="col-md-4">
+    <div class="card text-center text-white mb-3 h-100" id="total-orders">
+      <div class="card-header">
+        <h5 class="card-title">Contact Information</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Email: {{customer.email}}</p>
+        <p class="card-title">Phone: {{customer.phone}}</p>
+      </div>
     </div>
+  </div>
+
+  <!-- <div class="col-md-3">
+    <div class="card card-body">
+      <h5>Total order</h5>
+      <hr />
+      <h1 style="text-align: center; padding: 10px">{{order_count}}</h1>
+    </div>
+  </div> -->
+  <div class="col-md-4">
+    <div class="card text-center text-white mb-3 h-100" id="total-orders">
+      <div class="card-header">
+        <h5 class="card-title">Total orders</h5>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title ">{{order_count}}</h3>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
-<br>
-<div class="row">
+<br />
+<!-- <div class="row">
     <div class="col">
         <div class="card card-body">
             <form method="get">
@@ -38,31 +56,90 @@
             </form>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-9">
-        <div class="card card-body">
-            <table class="table table-sm">
-                <tr>
-                    <th>Book</th>
-                    <th>Note</th>
-                    <th>date ordered</th>
-                    <th>status</th>
-                    <th>update</th>
-                    <th>remove</th>
-                </tr>
-                {% for order in order%}
-                <tr>
-                <td>{{order.book}}</td>
-                <td>{{order.note}}</td>
-                <td>{{order.date_created}}</td>
-                <td>{{order.status}}</td>
-                <td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">update</a></td>
-                <td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">delete</a></td>
-                </tr>
-                {% endfor %}
-            </table>
+</div> -->
+<div class="row justify-content-center mt-5">
+  <div class="col-12">
+    <div class="card card-body shadow-sm">
+      <h4 class="card-title mb-3 text-center">Filter Orders</h4>
+      <form method="get">
+        <div class="row">
+          <!-- Start Date Field -->
+          <div class="col-md-4 mb-3">
+            <label
+              for="{{ myfilter.form.start_date.id_for_label }}"
+              class="form-label"
+              >Start Date</label
+            >
+            {{ myfilter.form.start_date }}
+          </div>
+
+          <!-- End Date Field -->
+          <div class="col-md-4 mb-3">
+            <label
+              for="{{ myfilter.form.end_date.id_for_label }}"
+              class="form-label"
+              >End Date</label
+            >
+            {{ myfilter.form.end_date }}
+          </div>
+
+          <!-- Note Field -->
+          <div class="col-md-4 mb-3">
+            <label
+              for="{{ myfilter.form.note.id_for_label }}"
+              class="form-label"
+              >Note</label
+            >
+            {{ myfilter.form.note }}
+          </div>
         </div>
+
+        <!-- Search Button -->
+        <!-- <div class="d-grid"> -->
+        <button class="btn btn-info btn-block" type="submit">Search</button>
+        <!-- </div> -->
+      </form>
     </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <!-- <div class="col-md-9"> -->
+    <div class="col-12">
+    <div class="card card-body">
+      <table class="table table-lg">
+        <tr>
+          <th>Book</th>
+          <th>Note</th>
+          <th>date ordered</th>
+          <th>status</th>
+          <th>update</th>
+          <th>remove</th>
+        </tr>
+        {% for order in order%}
+        <tr>
+          <td>{{order.book}}</td>
+          <td>{{order.note}}</td>
+          <td>{{order.date_created}}</td>
+          <td>{{order.status}}</td>
+          <td>
+            <a
+              class="btn btn-sm btn-info"
+              href="{% url 'update_order' order.id %}"
+              >update</a
+            >
+          </td>
+          <td>
+            <a
+              class="btn btn-sm btn-danger"
+              href="{% url 'delete_order' order.id %}"
+              >delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
 </div>
 {% endblock %}

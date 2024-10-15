@@ -1,18 +1,7 @@
 <br />
-<div class="row" style="margin-left: 10px; margin-right: 10px">
-  {%if not request.user.is_staff%}
-  <div class="col-md-3">
-    <div class="card card-body mb-3">
-      <a
-        class="btn btn-outline-info btn-sm btn-block"
-        href="{% url 'create_order_customer' %}"
-        >place order</a
-      >
-    </div>
-  </div>
-  {%endif%}
-  <div class="col-md-3">
-    <div class="card text-center text-white mb-3" id="total-orders">
+<div class="row">
+  <div class="col-md-4">
+    <div class="card text-center text-white mb-5" id="total-orders">
       <div class="card-header">
         <h5 class="card-title">Total orders</h5>
       </div>
@@ -22,8 +11,8 @@
     </div>
   </div>
 
-  <div class="col-md-3">
-    <div class="card text-center text-white mb-3" id="orders-delivered">
+  <div class="col-md-4">
+    <div class="card text-center text-white mb-5" id="orders-delivered">
       <div class="card-header">
         <h5 class="card-title">order delivered</h5>
       </div>
@@ -33,8 +22,8 @@
     </div>
   </div>
 
-  <div class="col-md-3">
-    <div class="card text-center text-white mb-3" id="orders-pending">
+  <div class="col-md-4">
+    <div class="card text-center text-white mb-5" id="orders-pending">
       <div class="card-header">
         <h5 class="card-title">order pending</h5>
       </div>
